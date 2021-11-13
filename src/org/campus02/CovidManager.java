@@ -7,7 +7,7 @@ public class CovidManager {
 
     public static void main(String[] args) {
 
-        Incidence stmk20211111 = new Incidence(
+        /*Incidence stmk20211111 = new Incidence(
                 "Steiermark", "2021-11-11", 1300);
         Incidence stmk20211110 = new Incidence(
                 "Steiermark", "2021-11-10", 1200);
@@ -16,16 +16,10 @@ public class CovidManager {
         Incidence wien20211110 = new Incidence(
                 "Wien", "2021-11-10", 4832);
         Incidence tirol20211111 = new Incidence(
-                "Tirol", "2021-11-11", 999);
+                "Tirol", "2021-11-11", 999);*/
 
         ArrayList<Incidence> recordedValues = new ArrayList<>();
-        recordedValues.add(stmk20211110); // STRG+D
-        recordedValues.add(stmk20211111); // STRG+D
-        recordedValues.add(wien20211110); // STRG+D
-        recordedValues.add(wien20211111); // STRG+D
-        recordedValues.add(tirol20211111); // STRG+D
-        recordedValues.add(new Incidence("Salzburg",
-                "2021-11-11", 2999));
+        recordedValues = DataProvider.getData();
 
         System.out.println("Count of recorded Records: " + recordedValues.size());
 
@@ -53,7 +47,10 @@ public class CovidManager {
         }
         System.out.println("countTotalIncidencesStmk = " + countTotalIncidencesStmk);
 
+        System.out.println("totalIncidencesState = " + groupByState(recordedValues));
+    }
 
+    public static HashMap<String, Integer> groupByState(ArrayList<Incidence> recordedValues) {
         // Anzahl der Fälle je Bundesland
         HashMap<String, Integer> totalIncidencesState = new HashMap<>();
         for (Incidence oneElement : recordedValues) {
@@ -74,6 +71,28 @@ public class CovidManager {
                         oneElement.getNumber());
             }
         }
-        System.out.println("totalIncidencesState = " + totalIncidencesState);
+        return totalIncidencesState;
+    }
+
+    public static HashMap<String, Integer> groupByData(ArrayList<Incidence> recordedValues) {
+        // Summe der Fälle je Tag
+        return null;
+    }
+
+    public static int findHighestValue(ArrayList<Incidence> recordedValues) {
+        // Es soll der höchste gemeldete Wert gefunden werden
+        return 0;
+    }
+
+    public static int getAverageValueAfter(ArrayList<Incidence> recordedValues, String date) {
+        // Es soll der durchschnittliche Wert nach einem bestimmten Datum gefunden werden
+        // date ist beispielsweise 2021-08-01
+        return 0;
+    }
+
+    public static Incidence findDayStateWithHighestValues(ArrayList<Incidence> recordedValues) {
+        // Es soll die Meldung (state/date) mit dem höchsten Wert gefunden werden
+
+        return null;
     }
 }
